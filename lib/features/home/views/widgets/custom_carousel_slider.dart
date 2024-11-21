@@ -31,7 +31,8 @@ class _CustomCarouselSliderState extends State<CustomCarouselSlider> {
           child: Stack(
             children: <Widget>[
               CachedNetworkImage(
-                imageUrl: article.urlToImage ?? '',
+                imageUrl: article.urlToImage ??
+                    'https://developers.elementor.com/docs/assets/img/elementor-placeholder-image.png',
                 fit: BoxFit.cover,
                 width: 1000.0,
                 height: 280,
