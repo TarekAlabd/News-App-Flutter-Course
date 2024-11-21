@@ -109,7 +109,7 @@ class _CustomCarouselSliderState extends State<CustomCarouselSlider> {
                   const EdgeInsets.symmetric(vertical: 4.0, horizontal: 4.0),
               decoration: BoxDecoration(
                 borderRadius: _current == entry.key
-                    ? const BorderRadius.all(Radius.circular(4))
+                    ? const BorderRadius.all(Radius.circular(8))
                     : null,
                 shape: _current == entry.key
                     ? BoxShape.rectangle

@@ -24,4 +24,18 @@ class HomeCubit extends Cubit<HomeState> {
       emit(TopHeadlinesError(e.toString()));
     }
   }
+
+  Future<void> getRecommendationItems() async {
+    emit(RecommendedNewsLoading());
+    try {
+      const body = TopHeadlinesBody(
+        page: 1,
+        pageSize: 15,
+      );
+      final result = await homeServices.getTopHeadlines(body);
+      emit(RecommendedNewsLoaded(result.articles));
+    } catch (e) {
+      emit(RecommendedNewsError(e.toString()));
+    }
+  }
 }
