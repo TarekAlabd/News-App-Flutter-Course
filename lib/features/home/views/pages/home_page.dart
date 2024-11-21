@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:news_app/core/utils/route/app_routes.dart';
 import 'package:news_app/core/utils/theme/app_colors.dart';
 import 'package:news_app/core/views/widgets/app_bar_button.dart';
 import 'package:news_app/core/views/widgets/app_drawer.dart';
@@ -43,7 +44,10 @@ class _HomePageState extends State<HomePage> {
             AppBarButton(
               iconData: Icons.search,
               hasPaddingBetween: true,
-              onTap: () {},
+              onTap: () => Navigator.pushNamed(
+                context,
+                AppRoutes.search,
+              ),
             ),
             const SizedBox(width: 8),
             AppBarButton(
