@@ -1,6 +1,8 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:news_app/core/utils/route/app_routes.dart';
+import 'package:news_app/features/home/models/top_headlines_api_response.dart';
+import 'package:news_app/features/home/views/pages/article_details_page.dart';
 import 'package:news_app/features/home/views/pages/home_page.dart';
 
 class AppRouter {
@@ -9,6 +11,14 @@ class AppRouter {
       case AppRoutes.home:
         return CupertinoPageRoute(
           builder: (_) => const HomePage(),
+          settings: settings,
+        );
+      case AppRoutes.articleDetails:
+        final article = settings.arguments as Article;
+        return CupertinoPageRoute(
+          builder: (_) => ArticleDetailsPage(
+            article: article,
+          ),
           settings: settings,
         );
       default:
