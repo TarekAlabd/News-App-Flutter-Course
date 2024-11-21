@@ -1,9 +1,9 @@
-class TopHeadlinesApiResponse {
+class NewsApiResponse {
   final String status;
   final int totalResults;
   final List<Article>? articles;
 
-  const TopHeadlinesApiResponse({
+  const NewsApiResponse({
     required this.status,
     required this.totalResults,
     this.articles,
@@ -21,8 +21,8 @@ class TopHeadlinesApiResponse {
     return result;
   }
 
-  factory TopHeadlinesApiResponse.fromMap(Map<String, dynamic> map) {
-    return TopHeadlinesApiResponse(
+  factory NewsApiResponse.fromMap(Map<String, dynamic> map) {
+    return NewsApiResponse(
       status: map['status'] ?? '',
       totalResults: map['totalResults']?.toInt() ?? 0,
       articles: map['articles'] != null
@@ -109,14 +109,14 @@ class Source {
 
   Map<String, dynamic> toMap() {
     final result = <String, dynamic>{};
-  
-    if(id != null){
+
+    if (id != null) {
       result.addAll({'id': id});
     }
-    if(name != null){
+    if (name != null) {
       result.addAll({'name': name});
     }
-  
+
     return result;
   }
 

@@ -4,7 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
 import 'package:news_app/core/utils/route/app_routes.dart';
 import 'package:news_app/core/utils/theme/app_colors.dart';
-import 'package:news_app/features/home/models/top_headlines_api_response.dart';
+import 'package:news_app/core/models/news_api_response.dart';
 
 class CustomCarouselSlider extends StatefulWidget {
   final List<Article> articles;
