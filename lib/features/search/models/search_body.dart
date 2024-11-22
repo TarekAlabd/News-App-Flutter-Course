@@ -11,18 +11,18 @@ class SearchBody {
     this.pageSize = 15,
   });
 
-  Map<String, dynamic> toMap() {
+  Map<String, dynamic> toJson() {
     final result = <String, dynamic>{};
-  
+
     result.addAll({'q': q});
     result.addAll({'searchIn': searchIn});
     result.addAll({'page': page});
     result.addAll({'pageSize': pageSize});
-  
+
     return result;
   }
 
-  factory SearchBody.fromMap(Map<String, dynamic> map) {
+  factory SearchBody.fromJson(Map<String, dynamic> map) {
     return SearchBody(
       q: map['q'] ?? '',
       searchIn: map['searchIn'] ?? '',
