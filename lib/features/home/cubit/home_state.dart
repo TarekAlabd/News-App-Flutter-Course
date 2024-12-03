@@ -33,3 +33,28 @@ final class RecommendedNewsError extends HomeState {
 
   const RecommendedNewsError(this.message);
 }
+
+final class FavoriteLoading extends HomeState {
+  final String title;
+
+  const FavoriteLoading(this.title);
+}
+
+final class FavoriteAdded extends HomeState {
+  final String title;
+
+  const FavoriteAdded(this.title);
+}
+
+final class FavoriteRemoved extends HomeState {
+  final String title;
+
+  const FavoriteRemoved(this.title);
+}
+
+final class FavoriteError extends HomeState {
+  final String message;
+  final String title;
+
+  const FavoriteError(this.message, this.title);
+}
