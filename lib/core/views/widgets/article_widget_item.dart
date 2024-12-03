@@ -26,15 +26,38 @@ class ArticleWidgetItem extends StatelessWidget {
       ),
       child: Row(
         children: [
-          ClipRRect(
-            borderRadius: BorderRadius.circular(16),
-            child: CachedNetworkImage(
-              imageUrl: article.urlToImage ??
-                  'https://developers.elementor.com/docs/assets/img/elementor-placeholder-image.png',
-              width: isSmaller ? 140 : 170,
-              height: isSmaller ? 150 : 180,
-              fit: BoxFit.cover,
-            ),
+          Stack(
+            children: [
+              ClipRRect(
+                borderRadius: BorderRadius.circular(16),
+                child: CachedNetworkImage(
+                  imageUrl: article.urlToImage ??
+                      'https://developers.elementor.com/docs/assets/img/elementor-placeholder-image.png',
+                  width: isSmaller ? 140 : 170,
+                  height: isSmaller ? 150 : 180,
+                  fit: BoxFit.cover,
+                ),
+              ),
+              PositionedDirectional(
+                top: 8,
+                end: 8,
+                child: InkWell(
+                  onTap: () {},
+                  child: const DecoratedBox(
+                    decoration: BoxDecoration(
+                      color: AppColors.white,
+                      shape: BoxShape.circle,
+                    ),
+                    child: Padding(
+                      padding: EdgeInsets.all(4.0),
+                      child: Icon(
+                        Icons.favorite_border_outlined,
+                      ),
+                    ),
+                  ),
+                ),
+              ),
+            ],
           ),
           const SizedBox(width: 16),
           Expanded(
