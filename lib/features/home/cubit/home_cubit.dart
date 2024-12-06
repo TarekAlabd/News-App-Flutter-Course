@@ -1,4 +1,3 @@
-import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:news_app/core/models/news_api_response.dart';
 import 'package:news_app/core/services/local_database_services.dart';
@@ -55,35 +54,6 @@ class HomeCubit extends Cubit<HomeState> {
     }
   }
 
-  Future<void> setFavorite(Article article) async {
-    emit(FavoriteLoading(article.title ?? ''));
-    try {
-      final favArticles = await _getFavorites();
-      final isFound =
-          favArticles.any((element) => element.title == article.title);
-      if (isFound) {
-        final index =
-            favArticles.indexWhere((element) => element.title == article.title);
-        favArticles.remove(favArticles[index]);
-        await localDatabaseServices.setStringList(
-          AppConstants.favoritesKey,
-          favArticles.map((e) => e.toJson()).toList(),
-        );
-        emit(FavoriteRemoved(article.title ?? ''));
-      } else {
-        favArticles.add(article);
-        await localDatabaseServices.setStringList(
-          AppConstants.favoritesKey,
-          favArticles.map((e) => e.toJson()).toList(),
-        );
-        emit(FavoriteAdded(article.title ?? ''));
-      }
-      debugPrint('favArticles: ${favArticles.length}');
-    } catch (e) {
-      emit(FavoriteError(e.toString(), article.title ?? ''));
-    }
-  }
-
   Future<List<Article>> _getFavorites() async {
     final favorites = await localDatabaseServices.getStringList(
       AppConstants.favoritesKey,
@@ -98,14 +68,3 @@ class HomeCubit extends Cubit<HomeState> {
     return favArticles;
   }
 }
-
-// if (favorites != null) {
-//         favorites.add(article.toJson());
-//       } else {
-//         final List<String> newFavorites = [];
-//         newFavorites.add(article.toJson());
-//         await localDatabaseServices.setStringList(
-//           AppConstants.favoritesKey,
-//           newFavorites,
-//         );
-//       }
