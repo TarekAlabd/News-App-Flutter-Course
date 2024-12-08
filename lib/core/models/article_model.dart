@@ -1,7 +1,6 @@
 import 'dart:convert';
 
 import 'package:hive/hive.dart';
-import 'package:news_app/core/models/news_api_response.dart';
 
 part 'article_model.g.dart';
 

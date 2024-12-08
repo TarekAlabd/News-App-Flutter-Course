@@ -59,9 +59,16 @@ class FavoriteActionsCubit extends Cubit<FavoriteActionsState> {
     // final favorites = await localDatabaseServices.getStringList(
     //   AppConstants.favoritesKey,
     // );
-    final favorites = await localDatabaseHive.getData<List<Article>?>(
+    final favorites = await localDatabaseHive.getData<List<dynamic>?>(
       AppConstants.favoritesKey,
     );
+
+    if (favorites == null) {
+      return [];
+    }
+
+
+
     // final List<Article> favArticles = [];
     // if (favorites != null) {
     //   for (var favArticleString in favorites) {
@@ -69,6 +76,6 @@ class FavoriteActionsCubit extends Cubit<FavoriteActionsState> {
     //     favArticles.add(favArticle);
     //   }
     // }
-    return favorites ?? [];
+    return favorites.map((e) => e as Article).toList();
   }
 }
