@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:intl/intl.dart';
 import 'package:news_app/core/cubit/favorite_actions/favorite_actions_cubit.dart';
+import 'package:news_app/core/models/article_model.dart';
 import 'package:news_app/core/models/news_api_response.dart';
 import 'package:news_app/core/utils/route/app_routes.dart';
 import 'package:news_app/core/utils/theme/app_colors.dart';

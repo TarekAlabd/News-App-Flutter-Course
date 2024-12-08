@@ -1,5 +1,7 @@
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:news_app/core/models/article_model.dart';
 import 'package:news_app/core/models/news_api_response.dart';
+import 'package:news_app/core/services/local_database_hive.dart';
 import 'package:news_app/core/services/local_database_services.dart';
 import 'package:news_app/core/utils/app_constants.dart';
 import 'package:news_app/features/home/models/top_headlines_body.dart';
@@ -11,7 +13,8 @@ class HomeCubit extends Cubit<HomeState> {
   HomeCubit() : super(HomeInitial());
 
   final homeServices = HomeServices();
-  final localDatabaseServices = LocalDatabaseServices();
+  // final localDatabaseServices = LocalDatabaseServices();
+  final localDatabaseHive = LocalDatabaseHive();
 
   Future<void> getTopHeadlines() async {
     emit(TopHeadlinesLoading());
@@ -39,7 +42,7 @@ class HomeCubit extends Cubit<HomeState> {
       final articles = result.articles ?? [];
       final favArticles = await _getFavorites();
 
-      for (int i=0; i<articles.length; i++) {
+      for (int i = 0; i < articles.length; i++) {
         var article = articles[i];
         final isFound =
             favArticles.any((element) => element.title == article.title);
@@ -55,16 +58,19 @@ class HomeCubit extends Cubit<HomeState> {
   }
 
   Future<List<Article>> _getFavorites() async {
-    final favorites = await localDatabaseServices.getStringList(
+    // final favorites = await localDatabaseServices.getStringList(
+    //   AppConstants.favoritesKey,
+    // );
+    final favorites = await localDatabaseHive.getData<List<Article>?>(
       AppConstants.favoritesKey,
     );
-    final List<Article> favArticles = [];
-    if (favorites != null) {
-      for (var favArticleString in favorites) {
-        final favArticle = Article.fromJson(favArticleString);
-        favArticles.add(favArticle);
-      }
-    }
-    return favArticles;
+    // final List<Article> favArticles = [];
+    // if (favorites != null) {
+    //   for (var favArticleString in favorites) {
+    //     final favArticle = Article.fromJson(favArticleString);
+    //     favArticles.add(favArticle);
+    //   }
+    // }
+    return favorites ?? [];
   }
 }
