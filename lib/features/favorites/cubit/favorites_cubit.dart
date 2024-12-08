@@ -21,7 +21,8 @@ class FavoritesCubit extends Cubit<FavoritesState> {
   Future<void> getFavoriteItems() async {
     emit(FavoritesLoading());
     try {
-      final favArticles = await favoritesServices.getFavorites();
+      // final favArticles = await favoritesServices.getFavorites();
+      final favArticles = await favoritesServices.getFavoritesHive();
       for (int index = 0; index < favArticles.length; index++) {
         var article = favArticles[index];
         article = article.copyWith(isFavorite: true);
