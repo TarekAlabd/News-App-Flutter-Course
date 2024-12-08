@@ -1,5 +1,6 @@
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:news_app/core/cubit/favorite_actions/favorite_actions_cubit.dart';
+import 'package:news_app/core/models/article_model.dart';
 import 'package:news_app/core/models/news_api_response.dart';
 import 'package:news_app/features/favorites/services/favorites_services.dart';
 

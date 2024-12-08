@@ -1,3 +1,4 @@
+import 'package:news_app/core/models/article_model.dart';
 import 'package:news_app/core/models/news_api_response.dart';
 import 'package:news_app/core/services/local_database_services.dart';
 import 'package:news_app/core/utils/app_constants.dart';
